@@ -47,3 +47,27 @@ const myFunction=function(){
 }
 //here, myFunction returns the type function but its called as object function
 //Mainly non-primitive data types return object as their type
+
+//+++++++++++++Memory++++++++++++++++
+
+//Stack (Primitive),Heap(Non-Primitive)
+// In case of stack memory usage, we get a copy of declared variables
+// In case of Heap memory, we get a reference of the used variables
+ let myWebsiteName="prakharagrawaldottech"
+ let anotherName=myWebsiteName
+ anothername="Chai aur code"
+
+//  console.log(myWebsiteName);
+//  console.log(anothername);
+
+ let userOne={
+  email:"user@gmail.com",
+  upi:"user@ybl"
+ }
+ //console.log(userOne);
+ 
+ let userTwo= userOne
+ userTwo.email="prakhar@google.com"
+// console.log(userOne);
+// console.log(userTwo);
+
