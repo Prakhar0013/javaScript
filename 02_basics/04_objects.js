@@ -51,3 +51,28 @@ console.log(Object.entries(tinderUser));
 
 console.log(tinderUser.hasOwnProperty("id")); //returns true if the object has the property
 
+//Destructuring is a way to extract values from objects or arrays without using the dot notation
+
+const course= {
+    coursename: "JavaScript",
+    price: 199,
+    courseInstructor: "Akshat",
+}
+// course.courseInstructor
+
+const {courseInstructor: instructor}= course;
+console.log(instructor);
+
+// This is code of React which involves javascript destructuring
+// const navbar =(props.company) => {  //Here, if we don't want to use props, we can directly use the variable via destructuring like above 
+// }
+//Example: 
+//const navbar =({company}) => {}
+// navbar(company="prakhar")
+
+//JSON
+// {
+//     "name":"asdf",
+//     "coursename":"python",
+//     "price":"free",
+// }
