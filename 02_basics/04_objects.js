@@ -76,3 +76,10 @@ console.log(instructor);
 //     "coursename":"python",
 //     "price":"free",
 // }
+
+[
+    {},
+    {},
+    {}
+]
+
