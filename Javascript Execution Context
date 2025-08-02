@@ -1,0 +1,110 @@
+Javascript Execution Context
+
+Execution of a file in Javascript
+It is performed in two phases.
+
+Code is first sent to:
+Global Execution Context
+which is referred by this
+
+It different for both browser, node.
+For browser, it is Window object
+Javascript is single threaded
+Everything is a process
+
+There are three execution contexts,
+Global Execution Context,
+Function Execution Context,
+Eval Execution Context
+
+The goes through two phases as mentioned earlier:
+1. Memory Creation /Creation Phase
+2. Execution Phase
+
+In Memory Creation Phase, there is allocation of memory to different variables.
+
+Execution Phase involves all the operations like arithmetic, logical etc.
+
+Example of execution:
+
+let val1=10
+let val2=5
+function addNum(num1, num2){
+    let total= num1 + num2
+    return total
+}
+let result1= addNum(val1, val2)
+let result2= addNum(10,2)
+
+For the above program ,the script executes like:
+Step 1: Global Execution/Global Environment
+
+Allocated via this
+
+Step 2: Memory Creation Phase
+
+val1 -> undefined
+val2 -> undefined
+addnum -> definition
+result1 -> undefined
+result2 ->undefined
+
+This is called as first cycle
+
+Step 3: Execution Phase
+
+val1 <- 10
+val2 <- 5
+addNum creates its own execution context ->(a new sandbox is created for the operation so a new memory, execution phases are also generated)
+
+new variable environment+ execution thread
+     ________________________
+     |                      |
+     V                      V
+Memory Phase:           Execution Phase:
+val1 ->undefined        num1 ->10
+val2 ->undefined        num2 ->5
+total->undefined        total ->15
+
+This total 15 is then returned to(parent context) global execution context
+
+The execution context created for the function is later deleted
+
+In the main execution phase, result1 with value 15 is added,
+another function addNum(10,2) is encountered
+
+Again for the function, a new variable environment, a thread are created. It has two phases:
+Memory Phase
+Execution Phase
+Just like last function, execution takes place
+
+Callstack:
+Global EC is added at the bottom(first) time of the stack
+If any function is called, its push into stack, after its execution, it is pushed
+
+In case of a function calling another function, they get pushed into stack in order.
+
+Lets say of there are three functions, one(), two() and, three()
+one() calling two(), and two() calling three
+Then in stack, Just Above Global EC, one() is pushed, which calls two().
+two() is then pushed into the stack above one()
+three() is finally pushed into stack by call from two()
+
+Here, for emptying stack, LIFO(last in, first out) is followed
+
+function one(){
+    console.log("one")
+    two()
+}
+function two(){
+    console.log("two")
+    three()
+}
+function three(){
+    console.log("three")   
+}
+one()
+two()
+three()
+
+Can test in browser in Sources tab by creating a new js file and putting debugger into the execution lines
