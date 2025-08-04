@@ -27,11 +27,11 @@ const user= {
 //We are not able to get the context within a function
 //like using this within didn't return an object, instead, we get global value, performace evaluations etc
 
-// const chai(){
-//     let username="Prakhar"
-//     console.log(this.username);
-// }
-// chai()
+const chai=function(){
+    let username="Prakhar"
+    console.log(this.username);
+}
+chai()
 //Output: Here the output we get is actually undefined
 
 
