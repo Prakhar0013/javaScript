@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="color: white; background-color: #212121;">
+
+<script>
+    const div= document.createElement("div");
+    console.log(div);
+    div.className="main"
+    div.id=Math.round(Math.random()*10+1)
+    div.setAttribute("title","Generated Title")
+    div.style.backgroundColor="green"
+    div.style.padding="12px"
+    //div.innerText="Just Testing"
+    const text= document.createTextNode("Just Testing");
+    div.appendChild(text);
+    //Both approaches are valid but second more preferred as it doesn't override existing content.
+    document.body.appendChild(div);
+</script>
+</body>
+</html>

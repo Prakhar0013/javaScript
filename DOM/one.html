@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Learning</title>
+    <style>
+        .bg-black {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 id="title" class="heading">DOM Learning <span style="display: none;">test text</span> </h1>
+        <h2>Lorem ipsum dolor sit</h2>
+        <h2>Lorem ipsum dolor sit</h2>
+        <h2>Lorem ipsum dolor sit</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+
+        <ul>
+            <li class="li-item">one</li>
+            <li class="li-item">two</li>
+            <li class="li-item">three</li>
+        </ul>
+    </div>
+</body>
+</html>
+<!--
+document.getElementById('title').getAttribute('id')
+document.getElementById('title').setAttribute('class','test')
+This overrides current value of class.
+To include both class and test, use the following code:
+document.getElementById('title').setAttribute('class', document.getElementById('title').getAttribute('class') + ' test');-->
+
+<!--
+We can set different styles as well like:
+title.style.backgroundColor= 'green'
+title.style.padding= "15px"
+title.style.borderRadius="15px"-->
+
+<!--
+There is a difference between innerText and textContent
+innerText returns the visible text, while textContent returns all text including hidden elements.
+innerHTML gives html content-->
+
+<!--
+While accessing the classes, ids, we usually get HTML Collection, not an array or a single elemwent.
+To convert HTML Collection to an array, we can use:
+Array.from(document.getElementsByClassName('className')) 
+
+querySelector and querySelectorAll are also useful.
+document.querySelector('.className') // returns first element with className
+
+const myul=document.querySelector('ul')
+const turnGreen= myul.querySelector('li')
+turnGreen.style.backgroundColor= "green"
+
+While using querySelectorAll, we get a node list
+
+const myul=document.querySelector("ul")
+undefined
+
+myul.querySelectorAll("li")
+NodeList(3) [li, li, li]0: li1: li2: lilength: 3[[Prototype]]: NodeListentries: ƒ entries()forEach: ƒ forEach()item: ƒ item()keys: ƒ keys()length: (...)values: ƒ values()constructor: ƒ NodeList()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.toStringTag): "NodeList"get length: ƒ length()[[Prototype]]: Object
+
+const liList= myul.querySelectorAll("li")
+undefined
+
+liList.style.color= "green"
+VM1333:1 Uncaught TypeError: Cannot set properties of undefined (setting 'color')
+    at <anonymous>:1:19
+(anonymous) @ VM1333:1
+
+liList[0].style.color= "green"
+'green'
+
+So, we can access each element in the NodeList and set styles or attributes as needed.
+
+const listItem=document.getElementByClassName("li-item")
+If we try to access a class using getElementByClassName, it will return an HTML Collection, not a single element.
+We cannot access or traverse through
+
+To traverse through the HTML Collection, we can use a for loop or Array.from() method:
+
+const liclass= document.getElementsByClassName("li-item")
+for(let i=0;i<liclass.length;i++){
+    console.log(liclass[i])
+}
+
+Array.from(liclass).forEach((item) => {
+    console.log(item);
+});
+const convArray= Array.from(liclass)
+convArray.forrEach(function(li){
+        li.style.color= "green"
+})
+-->
